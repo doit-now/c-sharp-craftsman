@@ -1,0 +1,11 @@
+- var connectionString = @"Data Source=Server=(local);uid=sa;pwd=sa123456;database=ContactDB";
+- var connectionString = @"Data Source=.\sqlexpress;Initial Catalog=ContactDB;uid=sa;pwd=sa123456;Integrated Security=True;Trusted_Connection=true;Encrypt=false"; //okie
+- var connectionString = @"Data Source=.\sqlexpress;Initial Catalog=ContactDB;Integrated Security=True;Trusted_Connection=true;Encrypt=false"; //okie
+- var connectionString = @"Data Source=TRUONG-LANG\SQLEXPRESS;Initial Catalog=ContactDB;Integrated Security=True;Trusted_Connection=true;Encrypt=false"; //okie
+- var connectionString = @"Data Source=TRUONG-LANG;Initial Catalog=ContactDB;Integrated Security=True;Trusted_Connection=true;Encrypt=false"; //okie
+- var connectionString = @"Server=localhost,1433;Initial Catalog=ContactDB;Integrated Security=True;Trusted_Connection=true;Encrypt=false"; //okie
+- var connectionString = @"Server=TRUONG-LANG,1433\SQLEXPRESS;Initial Catalog=ContactDB;Integrated Security=True;Trusted_Connection=true;Encrypt=false"; //okie
+- var connectionString = @"Server=TRUONG-LANG,1433\SQLEXPRESS;Database=ContactDB;Integrated Security=True;Trusted_Connection=true;Encrypt=false"; //okie
+
+- Dùng Server hay Data Source là như nhau, localhost hay (local) là như nhau
+- Integrated Security là dùng Windows Authen
