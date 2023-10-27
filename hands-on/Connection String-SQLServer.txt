@@ -9,3 +9,46 @@
 
 - Dùng Server hay Data Source là như nhau, localhost hay (local) là như nhau
 - Integrated Security là dùng Windows Authen
+------------------------------------------------------------------------------
+dotnet ef dbcontext scaffold "Server=localhost;Database=ProductManagement;Trusted_Connection=true;Encrypt=false" "Microsoft.EntityFrameworkCore.SqlServer" --output-dir "Models" --context-dir "DataAccessLayer"
+
+------------------------------------------------------------------------------
+-- Create Category table
+CREATE TABLE Category (
+   CategoryId CHAR(3) PRIMARY KEY,
+   CategoryName VARCHAR(50) NOT NULL
+);
+
+-- Create Product table
+CREATE TABLE Product (
+   ProductId CHAR(5) PRIMARY KEY,
+   ProductName VARCHAR(50) NOT NULL,
+   Price DECIMAL(10, 2) NOT NULL,
+   CategoryId CHAR(3),
+   CONSTRAINT FK_Product_Category FOREIGN KEY (CategoryId) REFERENCES Category(CategoryId)
+);
+
+-- Insert sample data into Category table
+INSERT INTO Category (CategoryId, CategoryName)
+VALUES
+   ('EL1', 'Electronics'),
+   ('CL1', 'Clothing'),
+   ('HA1', 'Home Appliances');
+
+-- Insert sample data into Product table
+INSERT INTO Product (ProductId, ProductName, Price, CategoryId)
+VALUES
+   -- Electronics category
+   ('E1P1', 'Laptop', 999.99, 'EL1'),
+   ('E1P2', 'Smartphone', 699.99, 'EL1'),
+   ('E1P3', 'Headphones', 89.99, 'EL1'),
+
+   -- Clothing category
+   ('CL1P1', 'T-Shirt', 19.99, 'CL1'),
+   ('CL1P2', 'Jeans', 39.99, 'CL1'),
+   ('CL1P3', 'Dress', 59.99, 'CL1'),
+
+   -- Home Appliances category
+   ('HA1P1', 'Refrigerator', 1499.99, 'HA1'),
+   ('HA1P2', 'Washing Machine', 899.99, 'HA1'),
+   ('HA1P3', 'Microwave Oven', 199.99, 'HA1');
