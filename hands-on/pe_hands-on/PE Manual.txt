@@ -124,7 +124,7 @@ III. TẠO DỰ ÁN WINDOWS FORMS VỚI DATABASE FIRST *************************
 > 
 
 3. TẠO FILE CẤU HÌNH LƯU THÔNG TIN CHUỖI KẾT NỐI CƠ SỞ DỮ LIỆU THAY VÌ HARD-CODE TRONG "DBCONTEXT" CLASS 
-* Tạo mới file JSON, tên là "appsettings.json" đặt chung trong project có chứa "DbContext" class
+* Tạo mới file JSON, tên là "appsettings.json" đặt chung trong project CÓ CHỨA UI - WINFORMS
 
 > Nội dung file cấu hình:
 {
