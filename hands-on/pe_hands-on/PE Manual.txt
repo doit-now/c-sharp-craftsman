@@ -1,5 +1,55 @@
 © 2023 giáo.làng *****
 
+
+
+ĐỀ THI PE - PRACTICLE EXAM
+* VIẾT 1 APP NHO NHỎ, GỒM 2 MÀN HÌNH:
+- LOGIN
+- QUẢN LÍ 1 CÁI GÌ ĐÓ - CRUD - THÊM XOÁ SỬA TÌM KIẾM CÁI GÌ ĐÓ: SÁCH, THIẾT BỊ ĐIỆN TỬ, NHÂN VIÊN, ĐỒ ĂN...
+
+* YÊU CẦU SOLUTION: 3-LAYER & ENTITY FRAMEWORK CORE 
+  - DATA ACCESS LAYER - REPOSITORY -> CSDL
+    
+  - BUSINESS LOGIC LAYER - SERVICE LAYER -> GIAO TIẾP VỚI CSDL VÀ VỚI UI
+
+  - UI LAYER - WINDOWS FORMS -> UI GIAO TIẾP VỚI SERVICE
+  
+  > 3 PROJECTS TRONG SOURCE ĐỂ NỘP BÀI
+  > KẾT NỐI CSDL KO ĐC HARD-CODE TRONG CODE, MÀ NẰM Ở FILE CẤU HÌNH .JSON
+  > DÙNG DATABASE FIRST -> DÙNG CSDL ĐỂ GENERATE RA CLASS TƯƠNG ỨNG
+
+* ĐỀ THI CHO MÌNH NHỮNG GÌ TRONG TAY???
+-  WIFI ĐỂ DOWNLOAD NUGET PACKAGE - THƯ VIỆN - DEPENDENCY LIÊN QUAN ĐẾN ENTITY FRAMEWORK
+- FILE ĐỀ BÀI
+- FILE CƠ SỞ DỮ LIỆU .SQL CHỨA TABLE DÙNG ĐỂ VIẾT CODE: 3 TABLE
+  > 1 TABLE DÀNH CHO LOGIN (USER/ACCOUNT KÈM ROLE)
+                IF (ROLE == ) THÌ LÀM GÌ
+  >  
+- FILE HƯỚNG DẪN LÀM BÀI, TRONG ĐÓ CÓ
+  > THÔNG TIN FILE CẤU HÌNH KẾT NỐI CSDL .JSON
+  > CÓ THỂ CÓ THÊM ĐOẠN CODE ĐỌC FILE .JSON ĐỂ TA CÓ ĐC CHUỖI KẾT NỐI CSDL, TA XÀI CHUỖI KẾT NỐI CSDL NÀY
+     KO CHƠI HARD-CODE
+
+     > GIÚP KHẢO THÍ CHẤM BÀI ĐC, MÀ KO CẦN MỞ SOURCE ĐỂ SỬA CHUỖI KẾT NỐI CSDL!!!
+
+  > NÉN SOLUTION LẠI, KO ĐC VƯỢT QUÁ 10MB
+
+* ĐỌC KĨ GUIDELINE ĐỂ XEM ĐC MỞ APP NÀO: THƯỜNG LÀ WORD, VISUALSTUDIO, CMD,...
+   MỞ NGOÀI DANH MỤC, 0 ĐIỂM
+
+* 0 ĐIỂM:
+  - CODE ERROR COMPILE KO ĐC
+  - HARD-CODE CHUỖI KẾT NỐI CSDL
+  - MỞ TOOL KO ĐC PHÉP
+
+MÌNH PHẢI TỰ CHẾ UI 
+                    !!!!!!!!!!! CODE 3-LAYER
+                                  !!!!!!!!!!!!!!!!! KO HARDCODE KẾT NỐI CSDL 
+                                               !!!!!!!!!!!!!! DÙNG DB CỦA TRƯỜNG ĐƯA, DB FIRST
+
+
+
+
 I. KIỂM TRA (CẤU HÌNH) CỦA SQLSERVER ******************************
 
 1. KIỂM TRA: SQL Server Configuration Manager
@@ -62,11 +112,13 @@ III. TẠO DỰ ÁN WINDOWS FORMS VỚI DATABASE FIRST *************************
 2. GENERATE ENTITY CLASS TỪ DATABASE
 >>>>> Trong cửa sổ Terminal gõ một trong các lệnh sau, nhớ thay chuỗi kết nối CSDL phù hợp với máy bạn:
 
-* Lệnh này sẽ tạo ra các class ứng với các table và ứng với CSDL ở 2 thư mục Models\ và DataAccessLayer\ ở project hiện hành:
-> dotnet ef dbcontext scaffold "Server=localhost;Database=ProductManagement;Trusted_Connection=true;Encrypt=false" "Microsoft.EntityFrameworkCore.SqlServer" --output-dir "Models" --context-dir "DataAccessLayer"
+* Lệnh này sẽ tạo ra các class ứng với các table và ứng với CSDL ở 2 thư mục Entities\ và Repositories\ ở project hiện hành:
+> dotnet ef dbcontext scaffold "Server=localhost;Database=BookManagement2023DB;Trusted_Connection=true;Encrypt=false" "Microsoft.EntityFrameworkCore.SqlServer" --output-dir "Entities" --context-dir "Repositories"
 
 * Lệnh này sẽ tạo ra các class ứng với các table và ứng với CSDL gom chung ở project hiện hành:
-> dotnet ef dbcontext scaffold "Server=localhost;Database=ProductManagement;Trusted_Connection=true;Encrypt=false" "Microsoft.EntityFrameworkCore.SqlServer" --output-dir ./
+> dotnet ef dbcontext scaffold "Data Source=TRUONG-LANG\SQLEXPRESS;Initial Catalog=BookManagement2023DB;User ID=sa;Password=sa123456;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False" "Microsoft.EntityFrameworkCore.SqlServer" --output-dir ./
+
+
 
 * Hoặc trong cửa sổ Package Manager Console gõ lệnh:
 > 
@@ -77,7 +129,7 @@ III. TẠO DỰ ÁN WINDOWS FORMS VỚI DATABASE FIRST *************************
 > Nội dung file cấu hình:
 {
   "ConnectionStrings": {
-    "DBDefault": "Data Source=TRUONG-LANG\\SQLEXPRESS;Database=AirProduct;User ID=sa;Password=sa123456;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"
+    "DBDefault": "Data Source=TRUONG-LANG\SQLEXPRESS;Initial Catalog=BookManagement2023DB;User ID=sa;Password=sa123456;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"
   }
 }
 
