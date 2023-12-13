@@ -113,12 +113,10 @@ III. TẠO DỰ ÁN WINDOWS FORMS VỚI DATABASE FIRST *************************
 >>>>> Trong cửa sổ Terminal gõ một trong các lệnh sau, nhớ thay chuỗi kết nối CSDL phù hợp với máy bạn:
 
 * Lệnh này sẽ tạo ra các class ứng với các table và ứng với CSDL ở 2 thư mục Entities\ và Repositories\ ở project hiện hành:
-> dotnet ef dbcontext scaffold "Server=localhost;Database=BookManagement2023DB;Trusted_Connection=true;Encrypt=false" "Microsoft.EntityFrameworkCore.SqlServer" --output-dir "Entities" --context-dir "Repositories"
+> dotnet ef dbcontext scaffold "Data Source=(local);Initial Catalog=StudentDB;User ID=sa;Password=sa123456;Trusted_Connection=True;Trust Server Certificate=True" "Microsoft.EntityFrameworkCore.SqlServer" --output-dir "Entities" --context-dir "Repositories"
 
 * Lệnh này sẽ tạo ra các class ứng với các table và ứng với CSDL gom chung ở project hiện hành:
-> dotnet ef dbcontext scaffold "Data Source=TRUONG-LANG\SQLEXPRESS;Initial Catalog=BookManagement2023DB;User ID=sa;Password=sa123456;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False" "Microsoft.EntityFrameworkCore.SqlServer" --output-dir ./
-
-
+> dotnet ef dbcontext scaffold "Data Source=(local);Initial Catalog=StudentDB;User ID=sa;Password=sa123456;Trusted_Connection=True;Trust Server Certificate=True" "Microsoft.EntityFrameworkCore.SqlServer" --output-dir ./
 
 * Hoặc trong cửa sổ Package Manager Console gõ lệnh:
 > 
@@ -129,7 +127,7 @@ III. TẠO DỰ ÁN WINDOWS FORMS VỚI DATABASE FIRST *************************
 > Nội dung file cấu hình:
 {
   "ConnectionStrings": {
-    "DBDefault": "Data Source=TRUONG-LANG\SQLEXPRESS;Initial Catalog=BookManagement2023DB;User ID=sa;Password=sa123456;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"
+    "DBDefault": "Data Source=(local);Initial Catalog=StudentDB;User ID=sa;Password=sa123456;Trusted_Connection=True;Trust Server Certificate=True"
   }
 }
 
