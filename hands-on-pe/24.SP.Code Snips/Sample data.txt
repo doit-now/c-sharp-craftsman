@@ -30,7 +30,7 @@ public List<Book> GetAllBooks()
         BookId = 3,
         BookName = "Tuổi Trẻ Đáng Giá Bao Nhiêu-How Much Is Youth Worth",
         Author = "Rosie Nguyễn",
-        PublicationDate = "2018-1-1",
+        PublicationDate = "2018-01-01",
         BookCategoryId = 5
     });
 
@@ -40,7 +40,7 @@ public List<Book> GetAllBooks()
         BookName = "Snow Crash",
         Description = "Hiro lives in a Los Angeles where franchises line the freeway...",
         Author = "Neal Stephenson",
-        PublicationDate = "2001-1-1",
+        PublicationDate = "2001-01-01",
         BookCategoryId = 2
     });
 
