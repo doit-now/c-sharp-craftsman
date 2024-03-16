@@ -1,0 +1,81 @@
+© 2024 giáo.làng *****
+
+.NET ENTITY CORE FRAMEWORK (A MODERN OBJECT-RELATION MAPPER) CLI INSTALLATION - A TROUBLESHOOTING
+
+-------------------------------------------------------------------------------------------------
+The command-line interface (CLI) tools for Entity Framework Core perform design-time development tasks. 
+For example, they create migrations, apply migrations, and generate code for a model based on an existing database. 
+The commands are an extension to the cross-platform dotnet command, which is part of the .NET Core SDK. These tools work with .NET Core projects.
+* URL: https://learn.microsoft.com/en-us/ef/core/cli/dotnet
+
+
+NuGet is the package manager for .NET. It enables developers to create, share, and consume useful .NET libraries. NuGet client tools provide the ability to produce and consume these libraries as "packages".
+* URL: https://learn.microsoft.com/en-gb/nuget/
+-------------------------------------------------------------------------------------------------
+
+I. INSTALLING THE TOOL: *************************************************************************
+Choose one of the following commands - Chọn 1 trong những lệnh dưới đây:
+
+* Installing the latest EF CORE 6.x version
+> dotnet tool install --global dotnet-ef --version 6.*
+
+* Installing the latest EF CORE 8.x version
+> dotnet tool install --global dotnet-ef --version 8.*
+
+* Installing the latest EF CORE version
+>  dotnet tool install --global dotnet-ef   
+
+> dotnet tool install --global dotnet-ef --ignore-failed-sources
+
+II. ERRORS (MAY BE): *************************************************************************          
+
+A version higher than 6.0 of package dotnet-ef is not found in NuGet feeds C:\Program Files (x86)\Microsoft SDKs\NuGetPackages\".
+
+dotnet-ef is not found in NuGet feeds C:\Program Files (x86)\Microsoft SDKs\NuGetPackages\".
+
+Unhandled exception: Microsoft.DotNet.Cli.NuGetPackageDownloader.NuGetPackageNotFoundException: dotnet-ef::[6.*, ) is not found in NuGet feeds C:\Program Files (x86)\Microsoft SDKs\NuGetPackages\".
+   at Microsoft.DotNet.Cli.NuGetPackageDownloader.NuGetPackageDownloader.GetMatchingVersionInternalAsync(String packageIdentifier, IEnumerable`1 packageSources, VersionRange versionRange, CancellationToken cancellationToken)
+   at Microsoft.DotNet.Cli.NuGetPackageDownloader.NuGetPackageDownloader.GetBestPackageVersionAsync(PackageId packageId, VersionRange versionRange, PackageSourceLocation packageSourceLocation)
+   at Microsoft.DotNet.Cli.ToolPackage.ToolPackageDownloader.<>c__DisplayClass8_0.<InstallPackage>b__0()
+   at Microsoft.DotNet.Cli.TransactionalAction.Run[T](Func`1 action, Action commit, Action rollback)
+   at Microsoft.DotNet.Tools.Tool.Install.ToolInstallGlobalOrToolPathCommand.Execute()
+   at System.CommandLine.Invocation.InvocationPipeline.Invoke(ParseResult parseResult)
+   at Microsoft.DotNet.Cli.Program.ProcessArgs(String[] args, TimeSpan startupTime, ITelemetry telemetryClient)
+
+
+III. FIXING: *************************************************************************
+
+1. CHECK NUGET CONFIGURATION
+* Verify that your NuGet configuration is correct and includes the official NuGet package source.
+  Checking the nuget.config file or by listing the sources in the command line.
+* Kiểm tra thông tin cấu hình về official NuGet server dùng download các depependency - NuGet package source 
+  
+  (C:\Users\giao.lang\AppData\Roaming\NuGet\NuGet.Config)
+
+> dotnet nuget list source
+
+2. ADD NUGET PACKAGE source if the official NuGet source is not listed:
+* Cập nhật/bổ sung official NuGet package source server
+
+> dotnet nuget add source -n nuget.org https://api.nuget.org/v3/index.json
+
+3. CLEAR NUGET CACHES:
+* Sometimes, clearing the NuGet caches can resolve issues with package sources. 
+You can clear all caches with the following command:
+
+> dotnet nuget locals all --clear
+
+4. REINSTALL dotnet-ef by using on of the following commands:
+
+> dotnet tool install --global dotnet-ef --version 6.*
+> dotnet tool install --global dotnet-ef --version 8.*
+> dotnet tool install --global dotnet-ef
+
+5. CHECK THE RESULT - KIỂM TRA KẾT QUẢ CÀI ĐẶT
+
+* In terminal, type the command 
+  Gõ lệnh trong Terminal để kiểm tra kết quả: 
+
+> dotnet tool list --global
+> dotnet-ef         
+

@@ -1,3 +1,5 @@
+© 2024 giáo.làng *****
+
 I. BOOKS' SAMPLE - TO BE USED IN BOOKSERVICE CLASS *********************************
 
 public List<Book> GetAllBooks()
