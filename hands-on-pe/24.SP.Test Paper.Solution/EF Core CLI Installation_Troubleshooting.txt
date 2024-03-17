@@ -1,6 +1,6 @@
 © 2024 giáo.làng *****
 
-.NET ENTITY CORE FRAMEWORK (A MODERN OBJECT-RELATION MAPPER) CLI INSTALLATION - A TROUBLESHOOTING
+.NET ENTITY FRAMEWORK CORE (A MODERN OBJECT-RELATION MAPPER) CLI INSTALLATION - A TROUBLESHOOTING
 
 -------------------------------------------------------------------------------------------------
 The command-line interface (CLI) tools for Entity Framework Core perform design-time development tasks. 
