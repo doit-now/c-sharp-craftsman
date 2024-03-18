@@ -1,0 +1,136 @@
+RECIPE FOR COOKING A PRACTICAL EXAM APP IN 5 MINUTES *********************************
+
+I. CREATE A SOLUTION FOLLOW THE NAMING CONVENTION AS IN THE EXAM PAPER INSTRUCTION
+* PUT YOUR WORK IN A FOLDER IN THE DESKTOP
+* THE NAME OF SOLUTION, MAIN GUI PROJECT: .... _YOURNAME
+
+II. CREATE 3 DIFFERENT PROJECTS
+
+1. WINDOWS FORMS APP/PROJECT, WITH NAME:  ...._YOURNAME (SEE THE INSTRUCTION IN THE EXAM PAPER) 
+* Choose: .NET 8.
+
+2. CLASS LIBRARY APP/Project, WITH NAME: Repositories
+* Choose: .NET 8.
+
+3. CLASS LIBRARY APP/Project, WITH NAME: Services
+* Choose: .NET 8.
+
+III. CHECKING THE SQL SERVER CONFIGURATION & SERVICES: SEE THE .TXT FILE IN MY GITHUB
+* TCP/IP Protocol Enable
+* Port 1433
+* SQL Server Browser Service: Manual/Automatic | Running
+
+IV. RUN .SQL SCRIPT TO CREATE DATABASE
+* JUST open the .sql file (attached with the exam paper) and F5 in SQL Server Management Studio 
+
+V. INSTALL EF CORE CLI (COMMAND LINE TOOL)
+
+1. Open Command Line/Command Prompt (type cmd in Search box in the Taskbar)
+
+> dotnet tool install --global dotnet-ef --version 8.*
+> dotnet tool install --global dotnet-ef                 //install the latest version
+
+2. CHECK result: 
+> dotnet tool list --global
+> dotnet-ef
+
+3. UNINSTALL EF CORE CLI
+> dotnet tool uninstall dotnet-ef -g
+ 
+
+VI. DECLARE/DOWNLOAD/IMPORT EF CORE LIBRARY (DEPENDENCY, PACKAGE) FROM INTERNET (NUGET SERVER)  (~JAVA: MAVEN REPO SERVER) ~XXX MB
+* 4 PACKAGES
+> Microsoft.EntityFrameworkCore
+> Microsoft.EntityFrameworkCore.Design
+> Microsoft.EntityFrameworkCore.Tools
+> Microsoft.EntityFrameworkCore.SqlServer
+
+* DECLARE IN REPOSITORY PROJECT!!!!!!!!!!!!!!
+* WIFI is required!!!
+
+1. Right click in the Repositories project | Manage NuGet Packages
+2. In Browse tab | Type "entity" 
+3. Choose 4 packages | Click Install | See Green marker
+4. Check the result: Repository | Dependency | Packages
+5. VS Menu | Build | Build Solution to refresh/update the existance of EF Core library 
+!!!!!!!!!!!!!!!!!!!!!
+>>>>>***** MUST BUILD THE SOLUTION FIRST BEFORE MOVING TO STEP 7 <<<<<*****
+
+VII. GERERATE THE ENTITY CLASSES FROM DATABASE (CREATED BEFORE)
+* dbscaffold
+* POWER SHELL TO RUN THE COMMAND (WITHIN REPOSITORIES PROJECT)
+* Modify the "Connection String" to match with your machine
+* Option with the command: Entities folder to store Entity class
+
+1. In Repositories project | Right click | Open in Terminal | 
+
+2. Copy & paste the db scaffold command from Test Paper
+   Lấy chuỗi lệnh generate Entity class từ đề thi 
+
+3. Modify the Connection String to match with your machine
+
+> dotnet ef dbcontext scaffold "Server=(local);Database= BookManagementDb;UID=sa;PWD=sa123456;TrustServerCertificate=True" "Microsoft.EntityFrameworkCore.SqlServer" --output-dir "Entities" --context-dir ".\"
+
+4. Hit Enter to see the result
+
+5. Check the result in Repositories project
+- 3 CLASS CORRESPONDING WITH 3 TABLES
+- DbContext class stands for the DATABASE SERVER!!!
+
+
+
+VIII. NO HARD-CODED CONNECTION STRING!!!
+1. Create a separate configuration file named: appsettings.json in GUI project
+* Right click on GUI project | Add New Item | Search json
+| Choose JavaScript JSON | Type file name: appsettings.json
+
+* Click in the .json file | Properties | Copy to Output Directory | Copy if newer
+
+2. Update the content of .json file based on Test Paper instruction, modify the connection string to macth to your machine
+(Copy nội dung file cấu hình từ đề thi, và modify cho phù hợp máy mình)
+
+{
+  "ConnectionStrings": {
+    "DBDefault": "Data Source=(local);Initial Catalog=BookManagementDb;User ID=sa;Password=sa123456;Trusted_Connection=True;Trust Server Certificate=True"
+  }
+}
+
+3. Update DbContext file to read the Connection String from the .json file
+   by copying code from the Test Paper 
+(Chỉnh sửa file DbContext để đọc đc info từ file cấu hình. Copy code từ đề thi)
+ 
+* private string? GetConnectionString()
+        {
+            IConfiguration configuration = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json", true, true).Build();
+            return configuration["ConnectionStrings:DBDefault"];
+        }
+
+* UPDATE method: OnConfiguring() to call the method GetConnectionString() by replace the hard-coded Connection String
+
+4. ADD THE JSON DEPENDENCY (LIKE ADD EF CORE LIB)
+> Microsoft.Extensions.Configuration
+> Microsoft.Extensions.Configuration.Json
+
+
+5. BECAREFULL REGARDING TO THE MISPELLING WITHIN THE reading .json file method!!!
+
+IX. CODE FOR THE REPOSITORIES - THE BASIC METHODS TO WORK DIRECTLY WITH DATABASE
+
+1. CREATE 3 different Repository classes corresponding with 3 tables in DB
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
