@@ -52,17 +52,21 @@ VI. DECLARE/DOWNLOAD/IMPORT EF CORE LIBRARY (DEPENDENCY, PACKAGE) FROM INTERNET 
 2. In Browse tab | Type "entity" 
 3. Choose 4 packages | Click Install | See Green marker
 4. Check the result: Repository | Dependency | Packages
-5. VS Menu | Build | Build Solution to refresh/update the existance of EF Core library 
+
+5. NOTIFY THE VISUAL STUDO TO KNOW ABOUT THE EF CORE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+   VS Menu | Choose Build | Choose Build Solution to refresh/update the existance of EF Core library 
 !!!!!!!!!!!!!!!!!!!!!
 >>>>>***** MUST BUILD THE SOLUTION FIRST BEFORE MOVING TO STEP 7 <<<<<*****
 
-VII. GERERATE THE ENTITY CLASSES FROM DATABASE (CREATED BEFORE)
-* dbscaffold
-* POWER SHELL TO RUN THE COMMAND (WITHIN REPOSITORIES PROJECT)
-* Modify the "Connection String" to match with your machine
+VII. GERERATE THE ENTITY CLASSES FROM DATABASE (THE DB CREATED BEFORE BY USING THE .SQL SCRIPT ATTACHED WITH EXAM PAPER)
+     Tạo ra các entity class từ database đã tạo trước đó (tạo database dùng file .sql trong đề thi)
+
+* db scaffold
+* USING POWER SHELL TO RUN THE COMMAND (WITHIN REPOSITORIES PROJECT)
+* Modify the "Connection String" to match with SQL Server in your machine
 * Option with the command: Entities folder to store Entity class
 
-1. In Repositories project | Right click | Open in Terminal | 
+1. In Repositories project | Right click | Open in Terminal | To see the Power Shell cmd tool
 
 2. Copy & paste the db scaffold command from Test Paper
    Lấy chuỗi lệnh generate Entity class từ đề thi 
@@ -80,11 +84,16 @@ VII. GERERATE THE ENTITY CLASSES FROM DATABASE (CREATED BEFORE)
 
 
 VIII. NO HARD-CODED CONNECTION STRING!!!
-1. Create a separate configuration file named: appsettings.json in GUI project
-* Right click on GUI project | Add New Item | Search json
+
+0. ADD THE JSON DEPENDENCY (LIKE ADD EF CORE LIB) INTO REPOSITORIES PROJECT
+> Microsoft.Extensions.Configuration
+> Microsoft.Extensions.Configuration.Json
+
+1. Create a separate configuration file named: "appsettings.json" in GUI PROJECT
+* Right click on GUI PROJECT | Add New Item | Search json
 | Choose JavaScript JSON | Type file name: appsettings.json
 
-* Click in the .json file | Properties | Copy to Output Directory | Copy if newer
+* Click in the .json file | Properties | Copy to Output Directory | Choose "Copy if newer"
 
 2. Update the content of .json file based on Test Paper instruction, modify the connection string to macth to your machine
 (Copy nội dung file cấu hình từ đề thi, và modify cho phù hợp máy mình)
@@ -109,9 +118,7 @@ VIII. NO HARD-CODED CONNECTION STRING!!!
 
 * UPDATE method: OnConfiguring() to call the method GetConnectionString() by replace the hard-coded Connection String
 
-4. ADD THE JSON DEPENDENCY (LIKE ADD EF CORE LIB)
-> Microsoft.Extensions.Configuration
-> Microsoft.Extensions.Configuration.Json
+
 
 
 5. BECAREFULL REGARDING TO THE MISPELLING WITHIN THE reading .json file method!!!
