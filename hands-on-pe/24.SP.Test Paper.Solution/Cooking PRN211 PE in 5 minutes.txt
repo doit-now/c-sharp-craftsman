@@ -1,8 +1,8 @@
 RECIPE FOR COOKING A PRACTICAL EXAM APP IN 5 MINUTES *********************************
 
-I. CREATE A SOLUTION FOLLOW THE NAMING CONVENTION AS IN THE EXAM PAPER INSTRUCTION
+I. CREATE A SOLUTION FOLLOWING THE NAMING CONVENTION AS IN THE EXAM PAPER INSTRUCTION
 * PUT YOUR WORK IN A FOLDER IN THE DESKTOP
-* THE NAME OF SOLUTION, MAIN GUI PROJECT: .... _YOURNAME
+* THE NAME OF SOLUTION, MAIN-GUI PROJECT: ...._YOURNAME
 
 II. CREATE 3 DIFFERENT PROJECTS
 
@@ -15,15 +15,18 @@ II. CREATE 3 DIFFERENT PROJECTS
 3. CLASS LIBRARY APP/Project, WITH NAME: Services
 * Choose: .NET 8.
 
-III. CHECKING THE SQL SERVER CONFIGURATION & SERVICES: SEE THE .TXT FILE IN MY GITHUB
+III. CHECKING THE SQL SERVER CONFIGURATION & SERVICES: SEE THE Database First_Step by Step.txt 
 * TCP/IP Protocol Enable
 * Port 1433
-* SQL Server Browser Service: Manual/Automatic | Running
+* SQL Server Browser Service: Manual/Automatic | Running !!!!!!!!!!!!!!
 
 IV. RUN .SQL SCRIPT TO CREATE DATABASE
-* JUST open the .sql file (attached with the exam paper) and F5 in SQL Server Management Studio 
+* JUST open the .sql file (attached with the exam paper) and F5 in SQL Server Management Studio to create the database
 
 V. INSTALL EF CORE CLI (COMMAND LINE TOOL)
+   (JAVA: JDBC ~ C#: ADO.NET) -> SQL STATEMENT - GÕ LỆNH SQL
+   (JAVA: HIBERNATE ~ C#: EF CORE)             - OOP
+                                               - WHERE LINQ, STREAM API
 
 1. Open Command Line/Command Prompt (type cmd in Search box in the Taskbar)
 
@@ -53,7 +56,7 @@ VI. DECLARE/DOWNLOAD/IMPORT EF CORE LIBRARY (DEPENDENCY, PACKAGE) FROM INTERNET 
 3. Choose 4 packages | Click Install | See Green marker
 4. Check the result: Repository | Dependency | Packages
 
-5. NOTIFY THE VISUAL STUDO TO KNOW ABOUT THE EF CORE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+5. NOTIFY THE VISUAL STUDIO TO KNOW ABOUT THE EF CORE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
    VS Menu | Choose Build | Choose Build Solution to refresh/update the existance of EF Core library 
 !!!!!!!!!!!!!!!!!!!!!
 >>>>>***** MUST BUILD THE SOLUTION FIRST BEFORE MOVING TO STEP 7 <<<<<*****
