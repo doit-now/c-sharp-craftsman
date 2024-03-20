@@ -2,11 +2,11 @@ RECIPE FOR COOKING A PRACTICAL EXAM APP IN 5 MINUTES ***************************
 
 I. CREATE A SOLUTION FOLLOWING THE NAMING CONVENTION AS IN THE EXAM PAPER INSTRUCTION
 * PUT YOUR WORK IN A FOLDER IN THE DESKTOP
-* THE NAME OF SOLUTION, MAIN-GUI PROJECT: ...._YOURNAME
+* THE NAME OF SOLUTION, MAIN-GUI PROJECT: ..._YOURNAME
 
 II. CREATE 3 DIFFERENT PROJECTS
 
-1. WINDOWS FORMS APP/PROJECT, WITH NAME:  ...._YOURNAME (SEE THE INSTRUCTION IN THE EXAM PAPER) 
+1. WINDOWS FORMS APP/PROJECT, WITH NAME:  ..._YOURNAME (SEE THE INSTRUCTION IN THE EXAM PAPER) 
 * Choose: .NET 8.
 
 2. CLASS LIBRARY APP/Project, WITH NAME: Repositories
@@ -14,6 +14,12 @@ II. CREATE 3 DIFFERENT PROJECTS
 
 3. CLASS LIBRARY APP/Project, WITH NAME: Services
 * Choose: .NET 8.
+
+>>>>> ADD CÁI DEPENDENCY/REFERENCE GIỮA CÁC PROJECT CÓ PHỤ THUỘC VỚI NHAU
+
+>>>>> 1. TỪ PROJECT SERVICES TRỎ SANG, ADD TỚI REPOSITORIES (chọn Option: Copy Local)
+
+>>>>> 2. TỪ PROJECT GUI TRỎ SANG, ADD TỚI SERVICES (chọn Option: Copy Local)
 
 III. CHECKING THE SQL SERVER CONFIGURATION & SERVICES: SEE THE Database First_Step by Step.txt 
 * TCP/IP Protocol Enable
@@ -25,7 +31,7 @@ IV. RUN .SQL SCRIPT TO CREATE DATABASE
 
 V. INSTALL EF CORE CLI (COMMAND LINE TOOL)
    (JAVA: JDBC ~ C#: ADO.NET) -> SQL STATEMENT - GÕ LỆNH SQL
-   (JAVA: HIBERNATE ~ C#: EF CORE)             - OOP
+   (JAVA: HIBERNATE ~ C#: EF CORE)             - OOP, ORM
                                                - WHERE LINQ, STREAM API
 
 1. Open Command Line/Command Prompt (type cmd in Search box in the Taskbar)
@@ -48,7 +54,7 @@ VI. DECLARE/DOWNLOAD/IMPORT EF CORE LIBRARY (DEPENDENCY, PACKAGE) FROM INTERNET 
 > Microsoft.EntityFrameworkCore.Tools
 > Microsoft.EntityFrameworkCore.SqlServer
 
-* DECLARE IN REPOSITORY PROJECT!!!!!!!!!!!!!!
+* DECLARE IN REPOSITORIES PROJECT!!!!!!!!!!!!!!
 * WIFI is required!!!
 
 1. Right click in the Repositories project | Manage NuGet Packages
@@ -56,7 +62,7 @@ VI. DECLARE/DOWNLOAD/IMPORT EF CORE LIBRARY (DEPENDENCY, PACKAGE) FROM INTERNET 
 3. Choose 4 packages | Click Install | See Green marker
 4. Check the result: Repository | Dependency | Packages
 
-5. NOTIFY THE VISUAL STUDIO TO KNOW ABOUT THE EF CORE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+5. NOTIFY THE VISUAL STUDIO TO KNOW ABOUT THE EXISTANCE OF EF CORE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
    VS Menu | Choose Build | Choose Build Solution to refresh/update the existance of EF Core library 
 !!!!!!!!!!!!!!!!!!!!!
 >>>>>***** MUST BUILD THE SOLUTION FIRST BEFORE MOVING TO STEP 7 <<<<<*****
