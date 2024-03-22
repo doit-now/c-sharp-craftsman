@@ -1,0 +1,28 @@
+Credentials | Authentication & Authorization
+              Xác thực       & Phân quyền 
+
+---------------------------------------------------------------------
+|   Email    |   Password    |   Notification                       |
+---------------------------------------------------------------------
+|   Right    |    Wrong      | Login failed. Please check your      |  public Account GetAccount(_email, _pass)
+|   Wrong    |      x        | credentials (email & password)       |  {
+|            |               |                                      |     select * from Account where
+|   Right    |    Right      | Role != 1: You are not allowed to    |     email = _email and pass = _pass  
+|            |               |            access this function!     |  
+|            |               |                                      |     if (no record)
+|   Right    |    Right      | Role == 1: Go to the Manager form    |        return 
+|            |               |            or page                   |
+---------------------------------------------------------------------                                 
+
+---------------------------------------------------------------------
+|   Email    |   Password    |   Notification                       |
+---------------------------------------------------------------------
+|   Right    |    Wrong      | Login failed. Check your password!   | 
+|   Wrong    |      x        | Login failed. Email doesn't exist!   |
+|            |               |                                      |
+|   Right    |    Right      | Role != 1: You are not allowed to    |
+|            |               |            access this function!     |
+|            |               |                                      |
+|   Right    |    Right      | Role == 1: Go to the Manager form    |
+|            |               |            or page                   |
+---------------------------------------------------------------------                                 

@@ -31,6 +31,7 @@ IV. RUN .SQL SCRIPT TO CREATE DATABASE
 
 V. INSTALL EF CORE CLI (COMMAND LINE TOOL)
    (JAVA: JDBC ~ C#: ADO.NET) -> SQL STATEMENT - GÕ LỆNH SQL
+
    (JAVA: HIBERNATE ~ C#: EF CORE)             - OOP, ORM
                                                - WHERE LINQ, STREAM API
 
@@ -46,6 +47,11 @@ V. INSTALL EF CORE CLI (COMMAND LINE TOOL)
 3. UNINSTALL EF CORE CLI
 > dotnet tool uninstall dotnet-ef -g
  
+* ĐỒNG BỘ VERSION VỚI .NET SDK ĐANG DÙNG CHO PROJECT
+* USE THE SAME VERSION WITH .NET SDK YOU ARE USING IN THE PROJECT CREATION
+
+* NO NEED TO RE-INSTALL DURING THE TEST TAKEN
+  KO CẦN CÀI LẠI KHI LÀM BÀI THI
 
 VI. DECLARE/DOWNLOAD/IMPORT EF CORE LIBRARY (DEPENDENCY, PACKAGE) FROM INTERNET (NUGET SERVER)  (~JAVA: MAVEN REPO SERVER) ~XXX MB
 * 4 PACKAGES
@@ -109,7 +115,7 @@ VIII. NO HARD-CODED CONNECTION STRING!!!
 
 {
   "ConnectionStrings": {
-    "DBDefault": "Data Source=(local);Initial Catalog=BookManagementDb;User ID=sa;Password=sa123456;Trusted_Connection=True;Trust Server Certificate=True"
+    "DefaultConnectionStringDB": "Data Source=(local);Initial Catalog=BookManagementDb;User ID=sa;Password=sa123456;Trusted_Connection=True;Trust Server Certificate=True"
   }
 }
 
@@ -122,7 +128,7 @@ VIII. NO HARD-CODED CONNECTION STRING!!!
             IConfiguration configuration = new ConfigurationBuilder()
                     .SetBasePath(Directory.GetCurrentDirectory())
                     .AddJsonFile("appsettings.json", true, true).Build();
-            return configuration["ConnectionStrings:DBDefault"];
+            return configuration["ConnectionStrings:DefaultConnectionStringDB"];
         }
 
 * UPDATE method: OnConfiguring() to call the method GetConnectionString() by replace the hard-coded Connection String
