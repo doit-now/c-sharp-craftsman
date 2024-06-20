@@ -1,3 +1,5 @@
+SỬ DỤNG WINDOWS FORMS, HOẶC WPF - HOÀN TẤT BÀI TẬP NHÓM VÀ BÁO CÁO Ở TUẦN 11
+
 1. App TodoList - Notes
 - Ngày và notes
 - Nhắc nhở
@@ -11,7 +13,7 @@
 - ...
 3. App quay video qua Web cam (giống app giám sát bằng camera)
 
-4. App quản lí sản phẩm bằng bar-code
+4. App quản lí sản phẩm bằng bar-code, QR (dùng cam bắt ảnh)
 - Nhập thông tin sản phẩm -> gen bar-code
 - Scan bar-code -> ra thông tin sản phẩm
 
