@@ -1,0 +1,28 @@
+1. App TodoList - Notes
+- Ngày và notes
+- Nhắc nhở
+- Tray icon
+- ...
+2. App chơi nhạc, hoặc xem video (1 trong 2, hoặc cả 2)
+- Có playlist
+- Import file nhạc
+- Mô tả thông tin nhạc
+- Chế độ chơi: tuần tự, suffle...
+- ...
+3. App quay video qua Web cam (giống app giám sát bằng camera)
+
+4. App quản lí sản phẩm bằng bar-code
+- Nhập thông tin sản phẩm -> gen bar-code
+- Scan bar-code -> ra thông tin sản phẩm
+
+5. App thu ngân quán trà sữa
+
+6. App Quản lí... (CRUD)                  
+
+7. App import danh sách từ Excel/CSV đẩy vào DB, export ra .XLSX 
+
+8. App generate CV info thành PDF, .DOCX
+
+9. App IoT
+
+10. App vẽ ảnh
