@@ -1,0 +1,18 @@
+CREATE TABLE LibraryDb
+GO
+
+USE LibraryDb
+GO
+
+CREATE TABLE Book(
+	BookId int PRIMARY KEY IDENTITY, -- KEY tự tăng, bắt đầu từ 1++; IDENTITY(5, 5) bắt đầu từ 5, bước nhảy 5: 5 10 15 20...
+	BookName nvarchar(100) NOT NULL,	
+	BookCategoryId int NOT NULL
+)
+GO
+
+//Gom chung các Entity class và DbContext class vào chung 1 thư mục tên là Models của project đang đứng gõ câu lệnh
+dotnet ef dbcontext scaffold "Server=(local);Database= Library;UID=sa;PWD=sa123456;TrustServerCertificate=True" "Microsoft.EntityFrameworkCore.SqlServer" --output-dir "Models"
+
+//Tách riêng các Entity class vào thư mục Entitiess; DbContext class vào thư mục gốc của project nơi đang gõ câu lệnh
+dotnet ef dbcontext scaffold "Server=(local);Database= Library;UID=sa;PWD=sa123456;TrustServerCertificate=True" "Microsoft.EntityFrameworkCore.SqlServer" --output-dir "Entities" --context-dir ".\"
