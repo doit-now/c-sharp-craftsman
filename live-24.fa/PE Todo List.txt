@@ -1,0 +1,64 @@
+TODO: NHỮNG VIỆC CẦN HOÀN TẤT CHO BÀI PE
+
+1. MÀN HÌNH LOGIN **********************************************************************
+* KHÔNG NHẬP CẢ 2 USER-EMAIL/PASS -> CHỬI
+* LOGIN KO QUAN TÂM EMAIL-USERNAME HOA THƯỜNG, CHỈ PHÂN BIỆT HOA THƯỜNG Ở PASSWORD
+* CHECK XEM USER-EMAIL/PASS CÓ ĐÚNG KO 
+  NẾU KO ĐÚNG THÌ CHỬI CHUNG CHUNG: SAI USER HOẶC PASS
+  
+  [NGOÀI ĐỜI, THÌ CHỬI CỤ THỂ: APP BIẾT SAI EMAIL HAY SAI PASS ĐỂ CÒN GỢI Ý [SIGN UP] [RESET PASS]
+   LÀM BÀI THI PE KO CẦN CHỬI CHÍNH XÁC!!!]
+
+* CHECK ROLE-PHÂN QUYỀN: NẾU ACCOUNT CÓ TỒN TẠI THÌ
+  -> NẾU LÀ MANAGER... 
+                     THÌ KO CHO VÀO APP, THÔNG BÁO CÂU: "BẠN KO CÓ QUYỀN!" 
+  -> NẾU LÀ STAFF...   
+                     THÌ CHO VÀO APP, NHƯNG DISABLE NÚT BẤM: CREATE, UPDATE, DELETE; CHỈ ĐC SEARCH THÔI
+  -> NẾU LÀ ADMIN... 
+                     THÌ CHO VÀO APP, FULL QUYỀN NHƯ, KO CẤM NÚT NHẤN NÀO
+
+* CHÀO HELLO <FULLNAME> Ở GÓC PHẢI TRÊN MÀN HÌNH [KO CẦN LÀM Ở BÀI PE, RẢNH THÌ LÀM]
+
+
+2. MÀN HÌNH MAIN  **********************************************************************
+* NHỚ IN CÂU CHÀO ĐÚNG ROLE [KO BẮT BUỘC Ở BÀI PE]
+* NHỚ DISABLE NÚT BẤM CREATE/UPDATE/DELETE NẾU ROLE LÀ STAFF
+* DATAGRID PHẢI JOIN BẢNG ĐỂ SHOW CỘT |SUPPLIER-NAME| KẾ BÊN CỘT KHOÁ NGOẠI FK |SUPPLIER-ID| 
+     |SUPPLIER-ID|SUPPLIER-NAME| 
+
+* TÍNH NĂNG SEARCH: Ô SEARCH THƯỜNG CÓ 2 Ô ĐỂ NHẬP VÀO ĐIỀU KIỆN SEARCH
+  - Ô NHẬP ĐIỀU KIỆN SEARCH CÓ THỂ LÀ: 1 Ô NHẬP TEXT, 1 Ô NHẬP SỐ; HOẶC CẢ 2 Ô NHẬP TEXT
+  - SEARCH TEXT LÀ GẦN ĐÚNG, GÕ 1 PHẦN CHUỖI VÀ PHẢI TÌM RA - TOÁN TỬ LIKE % TRONG SQLSERVER    
+  - SEARCH TEXT KO QUAN TÂM HOA THƯỜNG
+  - SEARCH SỐ LÀ SEARCH BẰNG =, VÍ DỤ QUANTITY = 50.
+  - NẾU KHÔNG NHẬP Ô NÀO THÌ BỎ ĐIỀU KIỆN SEARCH TRÊN Ô ĐÓ, KHÔNG TÌM KIẾM THEO Ô NHẬP BỎ TRỐNG
+  - NẾU BỎ TRỐNG CẢ 2 Ô ĐIỀU KIỆN TÌM KIẾM, TƯƠNG ĐƯƠNG LẤY TẤT CẢ, SELECT ALL 
+  - MỆNH ĐỀ GIỮA 2 Ô NHẬP LÀ AND, HOẶC OR
+    VÍ DỤ   Air-Con Name [___________]      or      Quantity [__________]
+            Air-Con Name [___________]      and     Quantity [__________]
+
+3. MÀN HÌNH DETAIL  **********************************************************************
+* PHẢI SHOW CÁI LABEL PHÙ HỢP EDIT MODE HAY CREATE MODE
+* VALIDATION CHO CÁC Ô NHẬP
+  -> SỐ: PHẢI CHECK TRONG ĐOẠN [X...Y], VÍ DỤ: QUANTITY TỪ 50...100
+         TRƯỚC KHI CHECK SỐ TRONG KHOẢNG PHẢI CHECK CÓ ĐANG NHẬP SỐ HAY KO? NẾU GÕ "NGỌC TRINH" THÌ SAO?
+  
+  -> CHỮ: PHẢI DÀI TỐI THIỂU BAO NHIÊU, KO ĐƯỢC BỎ TRỐNG, THEO FORMAT NÀO ĐÓ...
+  
+  -> NGÀY THÁNG: NGÀY PHẢI LỚN HƠN NGÀY X NÀO ĐÓ...
+
+* EDIT MODE VÀ CREATE XÀI CHUNG PHẦN VALIDATION, TÍNH ĐIỂM RIÊNG CHO MỖI PHẦN :-)
+     
+* NẾU MÀN HÌNH DETAIL LÀ CREATE MODE THÌ:
+  - Ô NHẬP PRIMARY KEY KO ĐC NHẬP TRÙNG [BÀI THI PE KHÔNG BẮT PHẢI KIỂM TRA PK TRÙNG]
+  - KEY TỰ TĂNG!!!  
+
+* NẾU MÀN HÌNH DETAIL LÀ EDIT MODE THÌ
+  - Ô NHẬP PRIMARY KEY PHẢI BỊ LOCK/DISABLE, VÌ UPDATE CẤM SỬA PRIMARY KEY!!!
+  - JUMP ĐẾN ĐÚNG SUPPLIER NAME MÀ AIR-CON THUỘC VỀ
+
+4. CHUNG CHO CẢ APP **********************************************************************
+* KIỂU NGÀY THÁNG CHƠI LÀM SAO? VÍ DỤ: NGÀY ĐĂNG KÍ, NGÀY HẾT HẠN...
+* REGEX CHO CÁC ĐỊNH DẠNG NHẬP DỮ LIỆU
+* PRIMARY KEY BỊ TRÙNG KHI TẠO MỚI, LÀM SAO CHỬI? [PE KO CẦN LÀM, RẢNH THÌ LÀM]
+* PRIMARY KEY GENERATE TỰ TĂNG 
