@@ -1,0 +1,27 @@
+CREATE DATABASE EmployeeManagementDB
+GO
+
+USE EmployeeManagementDB
+GO
+ 
+
+CREATE TABLE EmployeeRecords (
+    EmployeeID INT PRIMARY KEY IDENTITY(1,1),  -- Khóa chính tự tăng
+    EmployeeName VARCHAR(50),                  -- Cột chữ (tên nhân viên)
+    Salary DECIMAL(18, 2),                     -- Cột số thực (lương)
+    HireDate DATETIME                          -- Cột ngày tháng (ngày thuê)
+)
+GO
+
+-- Thêm 5 dòng dữ liệu vào bảng
+INSERT INTO EmployeeRecords (EmployeeName, Salary, HireDate)
+VALUES 
+    ('Alice Johnson', 55000.50, '2023-06-15'),
+    ('Bob Smith', 60000.75, '2023-07-10'),
+    ('Carol White', 48000.00, '2023-08-05'),
+    ('David Brown', 75000.25, '2023-09-20'),
+    ('Eve Black', 52000.10, '2023-10-25');
+GO
+
+-- Kiểm tra dữ liệu đã thêm
+SELECT * FROM EmployeeRecords;
