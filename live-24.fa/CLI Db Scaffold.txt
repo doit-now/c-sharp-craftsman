@@ -1,0 +1,3 @@
+dotnet ef dbcontext scaffold "Server=(local);uid=sa;pwd=sa123456;database= EmployeeManagementDB;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer --output-dir Entities --context-dir ".\"
+
+dotnet ef dbcontext scaffold "Server=TRUONG-LANG\SQLEXPRESS;uid=sa;pwd=sa123456;database= EmployeeManagementDB;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer --output-dir Entities --context-dir ".\"
