@@ -1,0 +1,22 @@
+Prompt:
+Trong C# hãy viết giúp tôi 1 hàm nhận vào 1 chuỗi Unicode (tiếng Việt), trả về chuỗi null nếu chuỗi chứa kí tự đặc biệt, có thông báo lỗi khi xảy ra (message box trong WPF). Ngược lại, cắt các khoảng trắng dư, đổi chữ hoa từng đầu từ, và trả về chuỗi đã chỉnh sửa
+ 
+public static string ProcessVietnameseString(string input)
+    {
+        // Kiểm tra ký tự đặc biệt: chỉ cho phép chữ cái Unicode, số và khoảng trắng
+        if (Regex.IsMatch(input, @"[^\p{L}\p{N}\s]"))
+        {
+            MessageBox.Show("Chuỗi chứa ký tự đặc biệt không hợp lệ.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+            return null;
+        }
+
+        // Xóa khoảng trắng dư và viết hoa chữ cái đầu mỗi từ
+        TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
+        string cleaned = string.Join(" ",
+            input.Trim()
+                 .Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                 .Select(word => textInfo.ToTitleCase(word.ToLower()))
+        );
+
+        return cleaned;
+    }

@@ -1,10 +1,10 @@
 USE master
 GO
 
-CREATE DATABASE Fall24PerfumeStoreDB 
+CREATE DATABASE PerfumeStoreDB 
 GO
 
-USE Fall24PerfumeStoreDB
+USE PerfumeStoreDB
 GO
 
 CREATE TABLE PSAccount (
@@ -60,25 +60,27 @@ CREATE TABLE PerfumeInformation (
   ReleaseDate Datetime,
   Concentration nvarchar(100) not null,
   Longevity nvarchar(100) not null, 
+  Quantity int,
+  Price decimal,	
   ProductionCompanyID nvarchar(30) FOREIGN KEY references ProductionCompany(ProductionCompanyID) on delete cascade on update cascade
 )
 GO
 
-INSERT INTO PerfumeInformation VALUES(N'P00011', N'Chanel No. 5', N'Jasmine, Rose, Sandalwood, Vanilla, Aldehydes', CAST(N'2021-3-13' AS DateTime), N'Eau de Parfum', N'6-8 hours', N'TE001123')
+INSERT INTO PerfumeInformation VALUES(N'P00011', N'Chanel No. 5', N'Jasmine, Rose, Sandalwood, Vanilla, Aldehydes', CAST(N'2021-3-13' AS DateTime), N'Eau de Parfum', N'6-8 hours', 5, 10, N'TE001123')
 GO
-INSERT INTO PerfumeInformation VALUES(N'P00012', N'Dior Sauvage', N'Bergamot, Pepper, Ambroxan, Patchouli', CAST(N'2015-4-19' AS DateTime), N'Eau de Toilette', N'8-10 hours', N'TE001124')
+INSERT INTO PerfumeInformation VALUES(N'P00012', N'Dior Sauvage', N'Bergamot, Pepper, Ambroxan, Patchouli', CAST(N'2015-4-19' AS DateTime), N'Eau de Toilette', N'8-10 hours', 15, 20, N'TE001124')
 GO
-INSERT INTO PerfumeInformation VALUES(N'P00013', N'Yves Saint Laurent Black Opium', N'Coffee, Vanilla, White Flowers, Cedarwood', CAST(N'2014-7-10' AS DateTime), N'Eau de Parfum', N'6-8 hours', N'TE001127')
+INSERT INTO PerfumeInformation VALUES(N'P00013', N'Yves Saint Laurent Black Opium', N'Coffee, Vanilla, White Flowers, Cedarwood', CAST(N'2014-7-10' AS DateTime), N'Eau de Parfum', N'6-8 hours', 25, 30, N'TE001127')
 GO
-INSERT INTO PerfumeInformation VALUES(N'P00014', N'Gucci Bloom', N'Jasmine Bud, Tuberose, Rangoon Creeper', CAST(N'2017-9-30' AS DateTime), N'Eau de Parfum', N'5-7 hours', N'TE001125')
+INSERT INTO PerfumeInformation VALUES(N'P00014', N'Gucci Bloom', N'Jasmine Bud, Tuberose, Rangoon Creeper', CAST(N'2017-9-30' AS DateTime), N'Eau de Parfum', N'5-7 hours', 35, 40, N'TE001125')
 GO
-INSERT INTO PerfumeInformation VALUES(N'P00015', N'Lanc me La Vie Est Belle', N'Iris, Jasmine, Orange Blossom, Patchouli, Vanilla', CAST(N'2012-7-10' AS DateTime), N'Eau de Parfum', N'6-8 hours', N'TE001123')
+INSERT INTO PerfumeInformation VALUES(N'P00015', N'Lanc me La Vie Est Belle', N'Iris, Jasmine, Orange Blossom, Patchouli, Vanilla', CAST(N'2012-7-10' AS DateTime), N'Eau de Parfum', N'6-8 hours', 45, 50, N'TE001123')
 GO
-INSERT INTO PerfumeInformation VALUES(N'P00016', N'Versace Eros', N'Mint, Lemon, Apple, Tonka Bean, Vanilla', CAST(N'2012-4-10' AS DateTime), N'Eau de Toilette', N'7-9 hours', N'TE001123')
+INSERT INTO PerfumeInformation VALUES(N'P00016', N'Versace Eros', N'Mint, Lemon, Apple, Tonka Bean, Vanilla', CAST(N'2012-4-10' AS DateTime), N'Eau de Toilette', N'7-9 hours', 55, 60, N'TE001123')
 GO
-INSERT INTO PerfumeInformation VALUES(N'P00017', N'Calvin Klein CK One', N'Green Tea, Bergamot, Papaya, Jasmine, Musk', CAST(N'1994-10-10' AS DateTime), N'Eau de Toilette', N'4-6 hours', N'TE001123')
+INSERT INTO PerfumeInformation VALUES(N'P00017', N'Calvin Klein CK One', N'Green Tea, Bergamot, Papaya, Jasmine, Musk', CAST(N'1994-10-10' AS DateTime), N'Eau de Toilette', N'4-6 hours', 65, 70, N'TE001123')
 GO
-INSERT INTO PerfumeInformation VALUES(N'P00018', N'Prada Candy', N'Caramel, Musk, Benzoin, Vanilla', CAST(N'2011-3-15' AS DateTime), N'Eau de Parfum', N'5-7 hours', N'TE001123')
+INSERT INTO PerfumeInformation VALUES(N'P00018', N'Prada Candy', N'Caramel, Musk, Benzoin, Vanilla', CAST(N'2011-3-15' AS DateTime), N'Eau de Parfum', N'5-7 hours', 75, 80, N'TE001123')
 GO
 
 
