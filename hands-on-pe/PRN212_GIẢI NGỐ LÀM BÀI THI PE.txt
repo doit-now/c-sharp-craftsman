@@ -80,6 +80,15 @@ GIẢI NGỐ LÀM BÀI THI PE
 - COPY HÀM ĐỌC JSON TỪ FILE GHI CHÚ, THẢY VÀO DBCONTEXT
 - SỬA HÀM ON_CONFIGURING ĐỂ ĐỌC FILE JSON
 
+>>>>> NHỚ CHỌN FILE APPSETTINGS.JSON, (F4 NẾU CỬA SỔ PROPERTIES CHƯA XUÂT HIỆN)
+      TÍCH CHỌN OPTION: COPY TO OUTPUT DIRECTORY -> ALWAYS!!!!!!!!!
+
+      ĐỂ ĐẢM BẢO KHI RUN APP, BUILD APP, FILE JSON NÀY VỀ CÙNG 1 CHỖ VỚI
+      FILE .DLL, .EXE, CHÚNG NÓ THẤY NHAU, Ở CÙNG 1 CHỖ, CHÚNG NÓ ĐỌC ĐC INFO CỦA 
+      NHAU, .DAL ĐỌC ĐC FILE CẤU HÌNH!!!!!!!!!!!!!
+      NGƯỜI XÀI APP, THÌ VÀO THƯ MỤC DLL EXE, TÌM .JSON MÀ SỬA USER/PASS CỦA 
+      SQLSERVER CHO PHÙ HỢP VỚI HỌ!!!!!!!!!!!!
+
 -------------------------
 VỀ NHÀ: TẠO SẴN 3 MÀN HÌNH CHO TUI, BỮA SAU TUI CODE LUÔN, KO CHỜ LỚP DESIGN
 - LoginWindow có sẵn ô nhập: email, pass, 2 nút [Login] [Quit]
@@ -88,6 +97,144 @@ VỀ NHÀ: TẠO SẴN 3 MÀN HÌNH CHO TUI, BỮA SAU TUI CODE LUÔN, KO CHỜ 
                        đặt tên sẵn luôn, 
                        ví dụ AirConditionerIdTextBox
                        ví dụ AirConditionerNameTextBox
+
+
+6. THAM CHIẾU PROJECT, ĐI TỪ DƯỚI ĐI LÊN, SẼ THẤY HIỆN TƯỢNG BẮC CẦU PHỤ THUỘC
+
+ĐƯỜNG ĐI CHUẨN:  GUI ---> CẦN BLL ----> DAL ----> DBCONTEXT ---> TABLE TRONG CSDL
+
+MUỐN THẤY BẮC CẦU MÀ KO CẦN ĐÓNG ĐI MỞ LẠI SOLUTION, TA LÀM THAM CHIẾU TỪ PHẢI
+TRỞ LẠI TRÁI
+BLL ----> CẦN DAL TRƯỚC                BLL  ----> DAL
+                                           CỬA SỔ F4, TÍCH VÀO COPY TO LOCAL: YES  
+GUI ----> CẦN BLL SAU      GUI ------>  
+                               CỬA SỔ F4, TÍCH VÀO COPY TO LOCAL: YES
+
+          >>>>>>> TÍCH CHỌN NÀY SẼ GIÚP: CÁC .DLL, VÀ .EXE CỦA 3 PROJECT TỤ
+                  HỌP CHUNG 1 CHỖ, ĐỂ TRỞ THÀNH FULL APP
+                  > CHÚNG NÓ CẦN CODE CỦA NHAU, CHÚNG NÓ PHẢI CHUNG 1 CHỖ
+                                                VÀ APPSETTINGS.JSON CX CHUNG CHỖ LUÔN
+
+         >>>>> NGOÀI ĐỜI: THƯ MỤC ĐÃ CÀI GAME, C:\PROGRAM FILES\TÊN HÃNG GAME\GAME\
+                              ... ĐỐNG FILE .DLL VÀ .EXE Ở CHUNG VỚI NHAU
+                                           THẤY NHAU, THÌ MỚI GIÚP NHAU ĐC
+                                           CUNG CẤP CODE, CLASS CHO NHAU DÙNG!!!!!!!
+ 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> VÀO CODE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+7. CODE CÁC HÀM CHO DAL - DATA ACCESS LAYER
+- TẦNG CHỊU TRÁCH NHIỆM VỚI TABLE, CHƠI TRỰC TIẾP TABLE QUA DbContext class
+- DbContext class chứa bên trong 3 List<ứng với 3 table, nay là 3 class đang nằm trong
+                                        Models, hoặc Entities>
+           3 cái bag  
+                List<AirConditioner> AirConditioners  { get; set; } -> _bag 
+                List<SuplierCompany> SuplierCompanies { get; set; } -> _bag 
+                List<StaffMember>       StaffMembers  { get; set; } -> _bag  
+
+DbContext ctx = new();
+          ctx.AirConditioners   -> get all -> vì có cái túi, for cái túi là lấy all
+                                -> đưa nguyên túi vào DataGrid!!!!!!!!!
+ 
+          ctx.AirConditioners.  
+                                Add(?)
+                                Remove(?)
+                                Update(?)   
+          ctx.SaveChange();     //cập nhật xuống table thật!!!!!!!!!!
+                   
+>>>>> NGUYÊN TẮC VIẾT DAL:
+- CÓ BAO NHIÊU TABLE, CÓ BẤY NHIÊU CLASS TƯƠNG ỨNG ĐỂ LO VIỆC CRUD TABLE ĐÓ
+- BÀI THI PE CÓ 3 TABLE:        3 CLASS TƯƠNG ỨNG LO CRUD - Repository class
+             AirConditioner     AirConditionerRepo       
+             SuplierCompany     SuplierCompanyRepo
+             StaffMember        StaffMemberRepo
+                                              -> NHÉT VÀO package/namespace: Repositories
+-> MỖI CLASS REPO TA CHẾ CÁC HÀM CRUD TƯƠNG ỨNG THEO NHU CẦU!!!!!!!!!
+   DĨ NHIÊN PHẢI XÀI DbContext như ở trên!!!!!!!!!!!!!!
+
+> NHỚ SỬA LẠI CLASS LÀ PUBLIC
+ 
+-------------------------------------------->
+8. CODE CÁC HÀM CHO BLL - BUSINESS LOGIC LAYER -> CHUYÊN XỬ LÍ DATA TRONG RAM
+ //GUI --- SERVICE --- REPO --- DBCONTEXT --- TABLE THẬT
+ //         !!!
+  
+- TẦNG CHỊU TRÁCH NHIỆM XỬ LÍ DATA TRONG RAM. CÓ THỂ GỌI THÊM 3RD PARTY: MOMO, GHN...
+                                              TÍNH TOÁN VOUCHER, POINT... 
+
+- NÓ SẼ GỌI, SẼ NHỜ REPO ĐỂ LẤY DATA TRONG TABLE ĐỂ CÓ CĂN CỨ VÀ DATA XỬ LÍ
+
+- CHẮC CHẮN TRONG BLL SẼ PHẢI KHAI BÁO BIẾN REPO!!!!!!!!!!!!!!!!!!!
+
+>>>>> NGUYÊN TẮC VIẾT BLL:
+- CÓ BAO NHIÊU REPO, CÓ BẤY NHIÊU CLASS TƯƠNG ỨNG CỦA BLL (NAY GỌI LÀ SERVICE CLASS)
+  ĐỂ LO VIỆC CRUD TABLE ĐÓ 
+  NHƯNG NHỜ QUA TAY REPO; BLL KO NHÚNG TAY TRỰC TIẾP XUỐNG DB CONTEXT
+
+- BÀI THI PE CÓ 3 TABLE THÌ SẼ CÓ TƯƠNG ỨNG 3 REPO VÀ TƯƠNG ỨNG 3 SERVICE
+
+       ENTITIES           DAL.REPOS                  BLL.SERVICES
+
+    AirConditioner     AirConditionerRepo            AirConditionerService   
+    SuplierCompany     SuplierCompanyRepo            SuplierCompanyService           
+    StaffMember        StaffMemberRepo               StaffMemberService
+
+
+       ENTITIES           DAL.REPOS                  BLL.SERVICES
+
+    AirConditioner     AirConditionerRepo            AirConditionerService   
+                          GetAll()                     GetAllAirCons() 
+
+
+
+    SuplierCompany     SuplierCompanyRepo            SuplierCompanyService           
+    StaffMember        StaffMemberRepo               StaffMemberService
+
+----------------------------------------------------------------
+9. CODE CÁC HÀM CHO GUI - SỬ DỤNG SERVICE ĐỂ CUNG CẤP DATA CHO GUI, GUI CX GỌI SERVICE
+                    GIÚP LƯU TRỮ DATA XUỐNG DB
+
+ //GUI --- SERVICE --- REPO --- DBCONTEXT --- TABLE THẬT
+ //!!!
+  
+- GUI CẦN SERVICE ĐỂ LO VỤ DATA!!!!!!!!!
+- NÓ SẼ GỌI, SẼ NHỜ SERVICE ĐỂ LẤY DATA TRONG TABLE ĐỂ CÓ CĂN CỨ VÀ DATA XỬ LÍ
+                            SERVICE LẠI ĐI NHỜ REPO
+                                                     REPO ĐI NHỜ DB CONTEXT
+    
+- CHẮC CHẮN TRONG GUI SẼ PHẢI KHAI BÁO BIẾN SERVICE
+
+
+>>>>> NGUYÊN TẮC VIẾT GUI:
+- KHAI BÁO CÁC SERVICE CẦN THIẾT TUỲ THEO MÀN HÌNH !!!!!!!!!!!!!!!!!!!
+- MÀN HÌNH NÀO CẦN NHỮNG SERVICE GÌ, THÌ GỌI SERVICE ĐÓ
+
+=========================================
+DAL: REPOSITORY: CHẮC CHẮN PHẢI KHAI BÁO DBCONTEXT
+
+BLL: SERVICE   : CHẮN CHẮN PHẢI KHAI BÁO REPO Ở TRÊN
+                 CHẮN CHẮN PHẢI GỌI API CỦA 3RD PARTY: MOMO, GHN...  
+
+GUI: CHẮC CHẮN PHẢI KHAI BÁO SERVICE, NHIỀU SERVICE ĐỂ PHỤC VỤ CÁC NÚT BẤM, COMBO BOX!!!!
+
+
+
+TUI CẦN BẠN, TRONG CODE CỦA TUI PHẢI KHAI BÁO BIẾN CỦA BẠN!!!!!!!!!
+
+
+================================================================
+10. NỘP BÀI
+- THƯ MỤC NỘP BÀI TRÊN SERVER CHỈ CHẤP NHẬN FILE SOURCE <= 10MB
+
+- THỰ MỤC CODE CỦA CHÚNG TA THƯỜNG >= 20MB DO NÓ CHỨA THÊM BỘ THƯ VIỆN EF CORE KHI TA ADD DEPENDENCY, VÀ KHI TA BUILD, RUN CẦN CÓ EF CORE MỚI CHẠY ĐC!!!
+
+- TA CẦN "CHIÊU" ĐỂ REMOVE THƯ VIỆN, MÀ KO GÂY HỎNG SOURCE CODE
+  MENU BUILD -> CLEAN SOLUTION TRƯỚC KHI NỘP BÀI ĐỂ REMOVE THƯ VIỆN = VS 
+  CẤM RA NGOÀI THƯ MỤC PROJECT XOÁ = TAY!!!!!!!!!!!
+
+  KÍCH THƯỚC THƯ MỤC GIẢM XUỐNG < 7MB 
+          -> NÉN PROJECT THÀNH FILE .RAR .ZIP NỘP BÀI
+
+- TRƯỚC KHI NÉN PROJECT, CẦN TẮT VISUAL STUDIO, ĐỂ NÓ NHẢ CÁC FILE RA CHO MÌNH!!!
+ 
 
 
 
