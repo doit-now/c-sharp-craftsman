@@ -247,7 +247,7 @@ TUI CẦN BẠN, TRONG CODE CỦA TUI PHẢI KHAI BÁO BIẾN CỦA BẠN!!!!!!!
 - TA DESIGN Ô NHẬP ID Ở MÀN HÌNH DETAIL VÀ DISABLE NÓ CHO CẢ 2 MODE: CREATE VÀ UPDATE
   KEY TỰ TĂNG SẼ KO CHO GÕ VÀO DÙ LÀ TẠO MỚI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 - KHI [SAVE] RECORD CÓ KEY TỰ TĂNG, VÍ DỤ SAVE Book, SAVE AirCon, SAVE Student
-  TA NEW Book()  NEW AirCon(), SAVE Student() TRỐNG, DÙNG CONSTRUCTOR KO THAM SỐ
+  TA NEW Book()  NEW AirCon(), NEW Student() TRỐNG, DÙNG CONSTRUCTOR KO THAM SỐ
   VÀ XÉT MODE MÀN HÌNH DETAIL
    
   if (mode == 'EDIT')
