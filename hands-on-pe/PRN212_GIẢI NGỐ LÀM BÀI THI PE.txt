@@ -235,6 +235,21 @@ TUI CẦN BẠN, TRONG CODE CỦA TUI PHẢI KHAI BÁO BIẾN CỦA BẠN!!!!!!!
 
 - TRƯỚC KHI NÉN PROJECT, CẦN TẮT VISUAL STUDIO, ĐỂ NÓ NHẢ CÁC FILE RA CHO MÌNH!!!
  
+=================================================================
+11. MỞ RỘNG THÊM: TÌNH HUỐNG KEY TỰ TĂNG CHO TABLE CHÍNH!!!!!!!!!!!!!!!!
+- ĐỌC ĐỀ THI, ĐỌC FILE DATABASE .SQL, CHÚ Ý XEM TABLE CHÍNH (TABLE MÌNH SẼ PHẢI CRUD CHO NÓ)
+  TABLE Ở VẾ N (TRONG MỐI QUAN HỆ 1 ------<- N)
+  KEY LÀ TỰ TĂNG HAY KEY TỰ NHẬP
+- KEY TỰ TĂNG CÓ DÒNG    id int primary key identity(1,1)  
+  IDENTITY LÀ DẤU HIỆU CHO BIẾT  CỘT KEY NÀY TỰ TĂNG. 2 TABLE CÒN LẠI KEY TỰ TĂNG KO CARE!!!
+                                                      DO KO CÓ NHU CẦU CRUD NÓ, CHỈ SELECT
+
+- TA DESIGN Ô NHẬP ID Ở MÀN HÌNH DETAIL VÀ DISABLE NÓ CHO CẢ 2 MODE: CREATE VÀ UPDATE
+  KEY TỰ TĂNG SẼ KO CHO GÕ VÀO DÙ LÀ TẠO MỚI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
+
 
 
 

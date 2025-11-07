@@ -1,10 +1,10 @@
 USE master
 GO
 
-CREATE DATABASE AirConditionerShopDB
+CREATE DATABASE AirConditionerShopDBAutoKey
 GO
 
-USE AirConditionerShopDB
+USE AirConditionerShopDBAutoKey
 GO
 
 CREATE TABLE StaffMember(
