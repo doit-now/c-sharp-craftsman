@@ -256,14 +256,6 @@ TUI CẦN BẠN, TRONG CODE CỦA TUI PHẢI KHAI BÁO BIẾN CỦA BẠN!!!!!!!
   NEW MODE THÌ KO GÁN Id cho OBJECT, VÌ CHỜ EF CORE VÀ SQL SERVER TỰ GENERATE
   
 
-
-
-
-
-
-
-
-
    
   
 
