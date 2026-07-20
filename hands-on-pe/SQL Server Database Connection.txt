@@ -1,0 +1,143 @@
+========================================================================
+          NHÓM LỆNH CHƠI VỚI ENTITY FRAMEWORK CORE (EF CORE)
+========================================================================
+
+
+
+================================================================
+0. LỆNH KIỂM TRA XEM ĐÃ CÀI EF CORE CLI HAY CHƯA?
+
+* KIỂM TRA EF CORE ĐÃ CÓ CHƯA?
+>_ dotnet tool list --global 
+
+* GỠ EF CORE ĐỂ CÀI PHIÊN BẢN MỚI (EF CORE VERSION ĂN THEO .NET SDK VERSION)
+>_ dotnet tool uninstall dotnet-ef –-global
+
+* CÀI EF CORE TƯƠNG THÍCH VỚI .NET SDK VERSION 10. 
+  SAU NÀY THAY BẰNG 11.*, 12.*,... TUỲ .NET SDK ĐANG CÓ TRÊN MÁY BẠN
+>_ dotnet tool install --global dotnet-ef --version 10.* 
+
+
+
+================================================================
+I. CÀI ĐẶT CÁC DEPENDENCY ĐỂ CHƠI VỚI CSDL VÀ TẬP TIN CẤU HÌNH .JSON
+* CÁC LỆNH DƯỚI ĐÂY PHẢI ĐỨNG Ở TRONG PROJECT CÓ CHƠI VỚI EF CORE!!!
+* 4 EF CORE PACKAGE NÊN CÙNG MAJOR VERSION VỚI VERSION .NET SDK ĐANG DÙNG CHO PROJECT, VÍ DỤ PROJECT DÙNG .NET 10. THÌ 
+  EF CORE DÙNG 10.x
+
+----------------------------------------------------------------
+1. POWER SHELL TRONG PROJECT -> PACKAGE MANAGER CONSOLE
+PS >_ Install-Package Microsoft.EntityFrameworkCore
+PS >_ Install-Package Microsoft.EntityFrameworkCore.SqlServer
+PS >_ Install-Package Microsoft.EntityFrameworkCore.Tools
+PS >_ Install-Package Microsoft.EntityFrameworkCore.Design
+
+PS >_ Install-Package Microsoft.Extensions.Configuration
+PS >_ Install-Package Microsoft.Extensions.Configuration.Json
+PS >_ Install-Package Microsoft.Extensions.Configuration.FileExtensions
+
+----------------------------------------------------------------
+2. POWER SHELL TRONG PROJECT -> .NET CLI
+PS >_ dotnet add package Microsoft.EntityFrameworkCore
+PS >_ dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+PS >_ dotnet add package Microsoft.EntityFrameworkCore.Tools
+PS >_ dotnet add package Microsoft.EntityFrameworkCore.Design
+
+PS >_ dotnet add package Microsoft.Extensions.Configuration
+PS >_ dotnet add package Microsoft.Extensions.Configuration.Json
+PS >_ dotnet add package Microsoft.Extensions.Configuration.FileExtensions
+
+----------------------------------------------------------------
+3. DÙNG VISUAL STUDIO GUI: 
+- PHẢI CHUỘT TRÊN DEPENDENCIES CỦA PROJECT | MANAGE NUGET PACKAGES... | GÕ TÊN CÁC PACKAGE TƯƠNG ỨNG ĐỂ CÀI...
+
+
+
+================================================================
+II. LỆNH CHẠY TRONG EF CORE CLI (CỬA SỔ LỆNH) ĐỂ GENERATE ENTITY CLASS TỪ TABLE 
+
+* CÓ NHIỀU CÁCH CHẠY KHÁC NHAU TUỲ CÁCH BẠN MUỐN LƯU TRỮ KẾT QUẢ CÁC CLASS C# (FILE .CS) 
+  SUY RA TỪ DATABASE VÀ TABLE Ở ĐÂU, CHUNG THƯ MỤC, HAY KHÁC THƯ MỤC TUỲ CODING CONVENTION!!!
+* PHẢI ĐỨNG Ở ĐÚNG PROJECT NƠI ĐÃ CÀI CÁC EF CORE DEPENDENCY (4 THƯ VIỆN)!!!
+
+----------------------------------------------------------------
+1. LƯU ENTITY CLASS VÀ DBCONTEXT CLASS Ở CHUNG THƯ MỤC Models/
+
+>_ dotnet ef dbcontext scaffold "Server=(local);uid=sa;pwd=123456;database= BookManagementDb;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models
+
+----------------------------------------------------------------
+2. LƯU ENTITY CLASS Ở THƯ MỤC Entities/ 
+   VÀ LƯU DBCONTEXT CLASS Ở THƯ MỤC HIỆN TẠI (.\) CỦA PROJECT
+dotnet ef dbcontext scaffold "Server=(local);uid=sa;pwd=123456;database= BookManagementDb;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer --output-dir Entities --context-dir .\
+
+----------------------------------------------------------------
+3. LƯU ENTITY CLASS Ở THƯ MỤC DAL/Entities/ 
+   VÀ DBCONTEXT CLASS Ở THƯ MỤC DAL/ CỦA PROJECT
+dotnet ef dbcontext scaffold "Server=(local);uid=sa;pwd=123456;database= BookManagementDb;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer --output-dir .\DAL\Entities --context-dir .\DAL
+
+
+
+================================================================
+III. CẤU TRÚC FILE APPSETTINGS.JSON CHỨA KẾT NỐI CƠ SỞ DỮ LIỆU SQL SERVER 
+
+----------------------------------------------------------------
+{
+  "ConnectionStrings": {
+    "DefaultConnectionStringDB": "server=(local);database=SHOP_DIEUDAO;uid=sa;pwd=123456;TrustServerCertificate=True"
+  }
+}
+
+----------------------------------------------------------------
+* CÓ THỂ THAY CỤM (local) BẰNG TÊN SQL SERVER TRÊN MÁY BẠN KHI KO KẾT NỐI THÀNH CÔNG QUA (local)
+  LẤY TÊN SQL SERVER MÁY BẠN TỪ MÀN HÌNH LOGIN CỦA SQL SERVER MANAGEMENT STUDIO (Ô SERVER NAME)
+  VÍ DỤ: TRUONG-LANG\SQLEXPRESS
+{
+  "ConnectionStrings": {
+    "DefaultConnectionStringDB": "server=TRUONG-LANG\SQLEXPRESS;database=SHOP_DIEUDAO;uid=sa;pwd=123456;TrustServerCertificate=True"
+  }
+}
+
+
+
+================================================================
+IV. HÀM ĐỌC FILE APPSETTINGS.JSON ĐỂ ĐƯA VÀO DBCONTEXT
+
+----------------------------------------------------------------
+1. CÀI ĐẶT CÁC NUGET PACKAGE SAU:
+- Microsoft.Extensions.Configuration
+- Microsoft.Extensions.Configuration.Json
+- Microsoft.Extensions.Configuration.FileExtensions
+
+----------------------------------------------------------------
+2. DÙNG 1 TRONG CÁC HÀM SAU ĐỂ ĐỌC THÔNG TIN CHUỖI KẾT NỐI CSDL TRONG FILE appsettings.json
+
+private string GetConnectionString()
+{
+    IConfiguration config = new ConfigurationBuilder()
+        .SetBasePath(Directory.GetCurrentDirectory())
+        .AddJsonFile("appsettings.json", true, true)
+        .Build();
+
+    return config.GetConnectionString("DefaultConnectionStringDB")
+        ?? throw new InvalidOperationException(
+            "Connection string DefaultConnectionStringDB not found."
+        );
+}
+
+----------------------------------------------------------------
+private string GetConnectionString()
+{
+    IConfiguration config = new ConfigurationBuilder()
+        .SetBasePath(Directory.GetCurrentDirectory())
+        .AddJsonFile("appsettings.json", true, true)
+        .Build();
+
+    return config["ConnectionStrings:DefaultConnectionStringDB"]
+        ?? throw new InvalidOperationException(
+            "Connection string DefaultConnectionStringDB not found."
+        );
+}
+
+
+
+ 
