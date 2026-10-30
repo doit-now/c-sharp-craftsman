@@ -11,7 +11,7 @@
 >_ dotnet tool list --global 
 
 * GỠ EF CORE ĐỂ CÀI PHIÊN BẢN MỚI (EF CORE VERSION ĂN THEO .NET SDK VERSION)
->_ dotnet tool uninstall dotnet-ef –-global
+>_ dotnet tool uninstall --global dotnet-ef
 
 * CÀI EF CORE TƯƠNG THÍCH VỚI .NET SDK VERSION 10. 
   SAU NÀY THAY BẰNG 11.*, 12.*,... TUỲ .NET SDK ĐANG CÓ TRÊN MÁY BẠN
